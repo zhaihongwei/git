@@ -1,0 +1,43 @@
+.Run-home-page{width: 80%;min-height: 300px;-border: 1px solid #000000;margin: 0 auto;}
+.Run-home-page-nav{width: 100%;height: 50px;}
+.Run-home-page-nav>ul>li{list-style: none;float: left;padding-left: 10px;padding-right: 10px;}
+.run{height: 30px;}
+.view{height: 30px;}
+.input{width: 130px;height: 30px;float: left;}
+.search{height: 30px;}
+.content{padding-left: 5px;padding-right: 5px;padding-bottom: 5px;padding-top: 5px;margin-left: 5px;margin-bottom: 10px;}
+p{word-break: break-word;}
+.gun{
+	width: 100%;
+	height: 50px;
+	overflow-y: auto;
+	line-height: 25px;
+}
+.individual{min-height: 100px;border: 1px solid #000000;width: 190px;list-style: none;margin-right: 5px;float: left;margin-top: 10px;}
+.conter-jianyi{min-height: 50px;}
+.Headportrait{width: 50px;height: 50px;margin: 0 auto;border-radius: 50%;margin-top: 20px;}
+.Headportrait>img{width: 100%;height: 100%;border-radius: 50%;border: 2px solid #00ACED;}
+.name{width: 100%;height: 50px;}
+.name>p:nth-child(1){width: 60px;height: 50px;text-indent:10px;line-height: 50px;float: left;}
+.name>p:nth-child(2){width: calc(100% - 80px);height: 50px;text-indent: 10px;line-height: 50px;float: left;}
+.features{width: 190px;height: 50px;text-indent: 10px;line-height: 50px;}
+.features-text{max-width: 100%;min-height: 10px;line-height: 30px;font-size: 18px;text-indent: 20px;word-wrap:break-word;}
+
+.run-individual{min-height: 300px;width: 100%;background: #FFFFFF;}
+.advice-main{width: 600px;min-height: 400px;margin: 0 auto;padding-bottom: 20px;background: #fff;display: none;position: fixed;top: 200px;margin-left: calc(50% - 500px);}
+.advice-header{
+	width: 400px;margin: 0 auto;
+}
+h3{text-align: center;margin-top: 20px;}
+.view-tiao{width: 100%;min-height: 400px;background: #FFFFFF;}
+.view-tiao>ul{width: 400px;min-height: 400px;margin: 0 auto;padding-top: 20px;}
+.view-tiao>ul>li{list-style: none;width: 100%;min-height: 30px;line-height: 30px;font-size: 20px;border-bottom: 1px dashed #9D9D9D;margin-bottom: 30px;}
+.searchs{height: 30px;}
+.button{width: 20%;margin-left: 17%;}
+.zhw_ul>li{
+	float: right !important;
+	/*margin-right: 100px;*/
+}
+
+
+

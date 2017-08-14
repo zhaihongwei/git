@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+		<style>
+		#file2 {
+			padding: 50px;
+		}
+		
+		#file1 {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			border: 1px solid red;
+			overflow: hidden;
+			opacity: 0;
+		}
+	</style>
+	<body>
+			<!--1.enctype = “multipart/form-data” 以及<input type = "file">.-->
+			<form id='file1' enctype="multipart/form-data">
+				<input type="file" name="file" id='file2' /><br />			
+			</form>
+			<img id='img' src="img/lang.png"/>
+			<script src="js/jquery-2.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+			<script type="text/javascript">
+//			
+//			if(localStorage.uimg!='null'){
+//				
+//				img.src=localStorage.uimg
+//			}else{
+//				img.src="../img/single_person.png"
+//			}
+			
+			
+			
+			
+			
+					$('#file2').change(function() {
+					if(ckPhoto(this)){
+					//获取file文件
+					var domFile = $(this)[0].files[0];
+//					console.log($(this)[0].files[0]);
+					//创建FormData对象  用来封装二进制文件
+					var formData = new FormData();
+					//追加file 对象  
+					formData.append('file', domFile);
+					//追加登陆者id
+					formData.append('id', 1179);//id  对应的是参选面试成功返回的id
+						
+					$.ajax({
+						url: 'http://47.92.37.168/php/index.php?C=Login&M=sendPic',
+						type: "POST",
+						dataType:'json',
+						data: formData,
+						processData: false, // tell jQuery not to process the data  
+						contentType: false, // tell jQuery not to set contentType  
+						//指定ajax post请求体的编码类型 默认
+						//Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+						xhr: function() { //重写ajax
+							var xhr = jQuery.ajaxSettings.xhr(); //获取原生的xhr对象  添加上传文件事件   
+							console.log(xhr);
+							//				在xhr.upload中有如下事件
+							//          	loadstart：在接收到相应数据的第一个字节时触发。
+							//				progress：在接收相应期间持续不断触发。
+							//				error：在请求发生错误时触发。
+							//				abort：在因为调用abort()方法而终止链接时触发。
+							//				load：在接收到完整的相应数据时触发。
+							//				loadend：在通信完成或者触发error、abort或load事件后触发。
+							xhr.upload.onload = function() { //上传完成 
+//								alert('上传完成 ')
+
+							}
+
+							xhr.upload.onprogress = function(ev) { //上传进度
+								if(ev.lengthComputable) {
+									//lengthComputable是一个表示进度信息是否可用的布尔值
+									var percent = Math.round(ev.loaded / ev.total * 100) + '%';
+									//ev.loaded 当前上传的文件大小   ev.total文件总大小
+									console.log(percent);
+								}
+							}
+							return xhr;
+						},
+						success: function(data) {
+//						debugger;
+//						{"code":200,"message":"\u4e0a\u4f20\u6210\u529f\uff01","data":"upload\/2017\/05\/17\/591ba01fe8d96.png"}
+//						console.log(data.data.split('\\').join(''));
+						//upload/2017/05/17/591ba139cba16.png
+						img.src='http://47.92.37.168/qinxuezao/php/'+data.data.split('\\').join('');
+						localStorage.uimg='http://47.92.37.168/qinxuezao/php/'+data.data.split('\\').join('');
+						}
+					})
+				}
+			})
+			//判断照片大小,及名称后缀
+		function ckPhoto(obj) {
+			console.log(obj.value);//C:\fakepath\2.png
+			photoExt = obj.value.substr(obj.value.lastIndexOf(".")).toLowerCase(); //获得文件后缀名
+			if(photoExt != '.jpg' && photoExt != '.png' && photoExt != '.jpeg') {
+				alert("请上传后缀名为jpg或jpg或jpeg的照片!");
+				return false;
+			}
+			var fileSize = 0;
+			//以下是兼容ie低版本 （本项目不兼容ie无须考虑）
+			//  var isIE = /msie/i.test(navigator.userAgent) && !window.opera;            
+			//  if (isIE && !obj.files) {          
+			//       var filePath = obj.value;            
+			//       var fileSystem = new ActiveXObject("Scripting.FileSystemObject");   
+			//       var file = fileSystem.GetFile (filePath);               
+			//       fileSize = file.Size;         
+			//  }else {  
+			fileSize = obj.files[0].size;//136523B
+			//  } 
+			fileSize = Math.round(fileSize / 1024 * 100) / 100;
+			if(fileSize >= 1024) {
+				alert("照片最大尺寸为1MB，请重新上传!");
+				return false;
+			}
+			return true;
+		}
+		
+		</script>
+	</body>
+</html>

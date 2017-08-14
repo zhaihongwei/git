@@ -1,0 +1,222 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Charts</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="Novus Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+		<script type="application/x-javascript">
+			addEventListener("load", function() {
+				setTimeout(hideURLbar, 0);
+			}, false);
+
+			function hideURLbar() {
+				window.scrollTo(0, 1);
+			}
+		</script>
+		<!-- Bootstrap Core CSS -->
+		<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+		<!-- Custom CSS -->
+		<link href="css/style.css" rel='stylesheet' type='text/css' />
+		<!-- font CSS -->
+		<!-- font-awesome icons -->
+		<link href="css/font-awesome.css" rel="stylesheet">
+
+		<!--<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>-->
+
+		<link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
+
+		<link href="css/custom.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/new_file.css" />
+	</head>
+	<style>
+		#file2 {
+			padding: 50px;
+		}
+		
+		#file1 {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			border: 1px solid red;
+			/*top:100px;*/
+			overflow: hidden;
+			opacity: 0;
+			top: 20%;
+			left: 40%;
+			z-index: 1000;
+		}
+		
+		.imgupload {
+			position: absolute;
+			top: 20%;
+			left: 40%;
+		}
+		
+		.myp {
+			position: absolute;
+			font-size: 20px;
+			font-weight: 600;
+			color: #FFFFFF;
+			top: 35%;
+			left: 41%;
+		}
+		
+		.sctx {
+			display: none;
+		}
+	</style>
+
+	<body class="cbp-spmenu-push">
+
+		<div class="form-grids row widget-shadow" data-example-id="basic-forms" id="canxuanyemian">
+			<div class="form-title Run-home-page-nav">
+
+				<ul class="zhw_ul">
+
+					<li>
+						<div class="form-group">
+
+							<input type="text" class="form-control input" id="findtext" placeholder="请输入名字">
+							<button type="button" id='findmy' class="btn btn-info view" data-toggle="modal" data-target=".view-button">查看我的评价</button>
+						</div>
+
+					</li>
+					<li>
+						<form>
+							<div class="form-group">
+								<input type="text" class="form-control input" id="findu" placeholder="查找面试者">
+								<button type="submit" id='findUser' class="btn btn-default search">查询</button>
+							</div>
+						</form>
+
+					</li>
+					<li>
+						<button type="button" class="btn btn-info run" data-toggle="modal" data-target=".Run-button" id="btn_canxuan">参选</button>
+
+					</li>
+				</ul>
+
+			</div>
+
+			<div style="width: 100%;height: 20px;"></div>
+
+			<div id="cxr_zhanshi">
+
+				<!--'<div class="col-md-4 profile widget-shadow content">'+
+									'<h4 class="title3">参选人</h4>'+
+									'<div class="profile-top">'+
+										'<img src="images/img1.png" alt="">'+
+										'<h4>'+data[i].username+'</h4>'+
+										'<h5>'+data[i].number'</h5>'+
+									'</div>'+
+									'<div class="profile-text">'+
+										'<h4>个人简介：</h4>'+
+										'<p class="gun">'+data[i].introduce+'</p>'+
+										'<div style="height: 30px;"></div>'+
+										'<h4>技术特长:</h4>'+
+										'<p class="gun">'+data[i].strong+'</p>'+
+									'</div>'+
+									'<div class="profile-btm conter-jianyi">'+
+										'<button type="button" class="btn btn-primary button" data-toggle="modal" data-target=".bs">建议</button>'+
+										'<button type="button" class="btn btn-primary button" thisid="'+data[i].id+'">录用</button>'+
+									'</div>'+
+								'</div>'-->
+
+			</div>
+
+		</div>
+
+		<!--展示内容-->
+
+		<!--参选模态框-->
+		<div class="modal fade Run-button" id='cxm' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+
+					<div class="run-individual">
+
+						<form class="myform" style="width: 400px;height: 100%;margin: 0 auto;padding-bottom: 20px;margin-top: 20px;">
+							<div class="form-group">
+								<label for="exampleInputEmail1">姓名：</label>
+								<input class="form-control" id="cx_name" placeholder="姓名">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">个人简介</label>
+								<textarea class="form-control" id="cx_grjj" placeholder="个人简介" style="max-width: 400px;"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">技术特长</label>
+								<textarea class="form-control" id="cx_jstc" placeholder="技术特长" style="max-width: 400px;"></textarea>
+							</div>
+							<button class="btn btn-default" id="canxuan">提交</button>
+						</form>
+						<div class='sctx'>
+							<form id='file1' enctype="multipart/form-data">
+								<input type="file" name="file" id='file2' /><br />
+							</form>
+							<img class="imgupload" src="images/img1.png" />
+							<p class="myp">上传头像</p>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!--建议提交-->
+
+		<div class="modal fade bs" tabindex="-1" role="dialog" id='myModal' aria-labelledby="myLargeModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+
+					<h3>您的建议</h3>
+					<form style="width: 400px;margin: 0 auto;height: 100%;padding-bottom: 30px;">
+						<div class="form-group">
+
+							<textarea type="text" class="form-control" id="jianyi_textarea" placeholder="您的建议" style="max-width: 400px;min-height: 150px;margin-top: 30px;"></textarea>
+						</div>
+
+						<button id="jianyi_tijiao" class="btn btn-default">提交</button>
+
+				</div>
+			</div>
+		</div>
+
+		<!--我的评价模态框-->
+
+		<div class="modal fade view-button" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+
+					<div class="view-tiao">
+						<h3>我的评价</h3>
+
+						<ul id='ul_modal'>
+
+						</ul>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		</div>
+
+		</div>
+
+		</div>
+
+		</div>
+
+		<script src="js/jquery-2.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--	<script src="js/scripts.js"></script>-->
+		<script src="js/bootstrap.js"></script>
+		<script src="js/mycanxuan.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>
